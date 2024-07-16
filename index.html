@@ -36,7 +36,7 @@
     window.Telegram.WebApp.ready();
 
     // Get the user data from the Telegram Web App API
-    const user = window.Telegram.WebApp.BiometricManager.authenticate.arguments;
+    const user = window.Telegram.WebApp.BiometricManager.deviceId;
     
     // Display the user data on the web page
     document.getElementById('userId').textContent = user;
