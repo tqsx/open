@@ -38,7 +38,12 @@
     const params = new URLSearchParams(Telegram.WebApp.initData);
 
     const userData = Object.fromEntries(params);
+    document.getElementById('userId').textContent = userData;
+    Telegram.WebApp.sendData(data);
+    Telegram.WebApp.close();
     userData.user = JSON.parse(userData.user);
+    Telegram.WebApp.sendData(data);
+    Telegram.WebApp.close();
     // Display the user data on the web page
     document.getElementById('userId').textContent = userData.user;
 
