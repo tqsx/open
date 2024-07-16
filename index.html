@@ -1,26 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Telegram Web App User Data</title>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Bot User D11ata</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        #userData {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
-  <h1>Telegram Web App User 1Data</h1>
-  <div id="user-data"></div>
 
-  <script>
-    Telegram.WebApp.ready();
+<div id="userData">
+    <h2>User Information</h2>
+    <p><strong>ID:</strong> <span id="userId">Loading...</span></p>
+    <p><strong>First Name:</strong> <span id="firstName">Loading...</span></p>
+    <p><strong>Last Name:</strong> <span id="lastName">Loading...</span></p>
+    <p><strong>Username:</strong> <span id="username">Loading...</span></p>
+</div>
 
-    Telegram.WebApp.onEvent('web_app_data_received', () => {
-      const userData = Telegram.WebApp.initDataUnsafe.user;
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+    // Ensure the Telegram WebApp SDK is loaded
+    window.Telegram.WebApp.ready();
 
-      let userDataHtml = '';
-      for (const [key, value] of Object.entries(userData)) {
-        userDataHtml += `<div><strong>${key}:</strong> ${value}</div>`;
-      }
+    // Get the user data from the Telegram Web App API
+    const user = window.Telegram.WebApp.initDataUnsafe.user;
 
-      document.getElementById('user-data').innerHTML = userDataHtml;
-    });
-  </script>
+    // Display the user data on the web page
+    document.getElementById('userId').textContent = user.id;
+    document.getElementById('firstName').textContent = user.first_name;
+    document.getElementById('lastName').textContent = user.last_name;
+    document.getElementById('username').textContent = user.username;
+
+    // Log the user data to the console (optional)
+    console.log('User Data:', user);
+</script>
+
 </body>
 </html>
