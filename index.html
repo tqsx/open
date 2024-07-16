@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Stlite3 App</title>
+    <title>stlite222 app</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.26.0/build/stlite.css" />
 </head>
+
 <body>
-  <iframe data-testid="stIFrame" allow="accelerometer; ambient-light-sensor; autoplay; battery; camera; clipboard-write; document-domain; encrypted-media; fullscreen; geolocation; gyroscope; layout-animations; legacy-image-formats; magnetometer; microphone; midi; oversized-images; payment; picture-in-picture; publickey-credentials-get; sync-xhr; usb; vr ; wake-lock; xr-spatial-tracking" src="https://www.videolive.fun/?token_movie=7181c70c32c9c7a1451a2c9b26f6a0&amp;amp;token=0115442e9d77410531d7eb4be96069&amp;amp;translation_hidden=13" width="704" height="600" scrolling="no" sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-downloads" title="st.iframe" style="overflow: hidden; color-scheme: normal;"></iframe>
+    <div id="root"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.26.0/build/stlite.js"></script>
+    <script>
+        stlite.mount(
+`
+        import streamlit as st
+
+        name = st.text_input('Your name')
+        st.write("Hello,", name or "world")
+`,
+        document.getElementById("root")
+
+);
+    </script>
 </body>
- 
 
 </html>
