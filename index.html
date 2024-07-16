@@ -1,39 +1,33 @@
-<!--
-    Simple static Telegram WebApp. Does not verify the WebAppInitData, as a bot token would be needed for that.
--->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>python-telegram-bot Example WebApp</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+  <title>Telegram Web App User Data</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
-<script type="text/javascript">
-    const colorPicker = new iro.ColorPicker('#picker', {
-        borderColor: "#ffffff",
-        borderWidth: 1,
-        width: Math.round(document.documentElement.clientWidth / 2),
-    });
-    colorPicker.on('color:change', function (color) {
-        document.body.style.background = color.hexString;
-    });
+<body>
+  <h1>Telegram Web App User Data</h1>
 
-    Telegram.WebApp.ready();
-    Telegram.WebApp.MainButton.setText('Color Picker HEHE').show().onClick(function () {
-        const data = JSON.stringify({hex: colorPicker.color.hexString, rgb: colorPicker.color.rgb});
-        Telegram.WebApp.sendData(data);
-        Telegram.WebApp.close();
+  <script>
+    let tg = window.Telegram.WebApp;
+
+    // Get user data from initData
+    let userData = JSON.parse(tg.initDataUnsafe).user;
+
+    // Display user data on the page
+    document.write(`
+      <p>ID: ${userData.id}</p>
+      <p>First Name: ${userData.first_name}</p>
+      <p>Last Name: ${userData.last_name}</p>
+      <p>Username: ${userData.username}</p>
+      <p>Language Code: ${userData.language_code}</p>
+    `);
+
+    // Example of sending data back to the bot
+    tg.MainButton.setText("Send Data to Bot");
+    tg.MainButton.show();
+    tg.MainButton.onClick(function() {
+      tg.sendData("Some data to send to the bot");
     });
-</script>
-<body style="background-color: #ffffff">
-<div style="position: absolute; margin-top: 5vh; margin-left: 5vw; height: 90vh; width: 90vw; border-radius: 5vh; background-color: var(--tg-theme-bg-color); box-shadow: 0 0 2vw
- #000000;">
-    <div id="picker"
-         style="display: flex; justify-content: center; align-items: center; height: 100%; width: 100%"></div>
-</div>
+  </script>
 </body>
-<script type="text/javascript">
-    Telegram.WebApp.expand();
-</script>
 </html>
