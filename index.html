@@ -7,25 +7,25 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <title>stlite app222</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.60.2/build/stlite.css"
-    />
-  </head>
+    <title>stlite app333</title>
+ </head>
   <body>
     <div id="root"></div>
-    <script src="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.60.2/build/stlite.js"></script>
-    <script>
-      stlite.mount(
-        `
-import streamlit as st
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+  Telegram.WebApp.ready();
 
-name = st.text_input('Your name')
-st.write("Hello,", name or "world")
-`,
-        document.getElementById("root"),
-      );
-    </script>
+  const userData = Telegram.WebApp.initDataUnsafe.user;
+
+  let userDataHtml = '';
+  for (const [key, value] of Object.entries(userData)) {
+    userDataHtml += `<div>${key}: ${value}</div>`;
+  }
+
+  document.body.innerHTML = `
+    <h1>User Data</h1>
+    ${userDataHtml}
+  `;
+</script>
   </body>
 </html>
