@@ -1,31 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <title>stlite app333</title>
- </head>
-  <body>
-    <div id="root"></div>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-<script>
-  Telegram.WebApp.ready();
+<head>
+  <title>Telegram Web App User Data</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div id="user-data"></div>
 
-  const userData = Telegram.WebApp.initDataUnsafe.user;
+  <script>
+    Telegram.WebApp.ready();
 
-  let userDataHtml = '';
-  for (const [key, value] of Object.entries(userData)) {
-    userDataHtml += `<div>${key}: ${value}</div>`;
-  }
+    const userData = Telegram.WebApp.initDataUnsafe.user;
 
-  document.body.innerHTML = `
-    <h1>User Data</h1>
-    ${userDataHtml}
-  `;
-</script>
-  </body>
+    let userDataHtml = '';
+    for (const [key, value] of Object.entries(userData)) {
+      userDataHtml += `<div><strong>${key}:</strong> ${value}</div>`;
+    }
+
+    document.getElementById('user-data').innerHTML = userDataHtml;
+  </script>
+</body>
 </html>
