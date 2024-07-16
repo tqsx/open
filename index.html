@@ -35,11 +35,12 @@
     // Ensure the Telegram WebApp SDK is loaded
     window.Telegram.WebApp.ready();
 
-    // Get the user data from the Telegram Web App API
-    const user = window.Telegram.WebApp.BiometricManager.biometricType;
-    
+    const params = new URLSearchParams(Telegram.WebApp.initData);
+
+    const userData = Object.fromEntries(params);
+    userData.user = JSON.parse(userData.user);
     // Display the user data on the web page
-    document.getElementById('userId').textContent = user;
+    document.getElementById('userId').textContent = userData.user;
 
     // Log the user data to the console (optional)
     console.log('User Data:', user);
