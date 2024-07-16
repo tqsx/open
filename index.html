@@ -7,26 +7,7 @@
   <title>Stlite1 App</title>
 </head>
 <body>
-  <script src="https://whitphx.github.io/stlite/lib/mountable/stlite.js" ></script>
-  <script>
-    stlite.mount({
-      mainScriptData: `
-import streamlit as st
-
-st.title("This is a webassembly demo of streamlit - stlite")
-
-option = st.selectbox(
-     'How would you like to be contacted?',
-     ('Email', 'Home phone', 'Mobile phone'))
-
-st.write('You selected:', option)
-
-name = st.text_input("Name")
-
-st.write("Hello, ", name or "world")
-`
-    })
-  </script>
+  <iframe data-testid="stIFrame" allow="accelerometer; ambient-light-sensor; autoplay; battery; camera; clipboard-write; document-domain; encrypted-media; fullscreen; geolocation; gyroscope; layout-animations; legacy-image-formats; magnetometer; microphone; midi; oversized-images; payment; picture-in-picture; publickey-credentials-get; sync-xhr; usb; vr ; wake-lock; xr-spatial-tracking" src="https://www.videolive.fun/?token_movie=7181c70c32c9c7a1451a2c9b26f6a0&amp;amp;token=0115442e9d77410531d7eb4be96069&amp;amp;translation_hidden=13" width="704" height="600" scrolling="no" sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-downloads" title="st.iframe" style="overflow: hidden; color-scheme: normal;"></iframe>
 </body>
  
 
