@@ -39,8 +39,23 @@
 
     const userData = Object.fromEntries(params);
     console.log('User Data:', userData); 
-    console.log('User Data:', Telegram.WebApp.initData); 
-    document.getElementById('userId').textContent = Telegram.WebApp.initData;
+    //console.log('User Data:', Telegram.WebApp.initData); 
+    document.getElementById('userId').textContent = userData;//Telegram.WebApp.initData;
+
+    function displayObjectValues(obj, level = 0) {
+        for (const key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                const value = obj[key];
+                if (typeof value === 'object' && value !== null) {
+                    displayObjectValues(value, level + 1);
+                } else {
+                    console.log(`${' '.repeat(level)}${key}: ${value}`);
+                }
+            }
+        }
+    }
+       
+    displayObjectValues(userData);
 
     // Log the user data to the console (optional)
     
