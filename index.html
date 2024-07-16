@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Telegram Web App User Data</title>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Stlite App</title>
 </head>
 <body>
-  <h1>Telegram Web App User Data</h1>
-
+  <script src="https://whitphx.github.io/stlite/lib/application/stlite.js" ></script>
   <script>
-    let tg = window.Telegram.WebApp;
+    stlite.mount({
+      mainScriptData: `
+import streamlit as st
 
-    // Get user data from initData
-    let userData = JSON.parse(tg.initDataUnsafe).user;
+st.title("This is a webassembly demo of streamlit - stlite")
 
-    // Display user data on the page
-    document.write(`
-      <p>ID: ${userData.id}</p>
-      <p>First Name: ${userData.first_name}</p>
-      <p>Last Name: ${userData.last_name}</p>
-      <p>Username: ${userData.username}</p>
-      <p>Language Code: ${userData.language_code}</p>
-    `);
+option = st.selectbox(
+     'How would you like to be contacted?',
+     ('Email', 'Home phone', 'Mobile phone'))
 
-    // Example of sending data back to the bot
-    tg.MainButton.setText("Send Data to Bot");
-    tg.MainButton.show();
-    tg.MainButton.onClick(function() {
-      tg.sendData("Some data to send to the bot");
-    });
+st.write('You selected:', option)
+
+name = st.text_input("Name")
+
+st.write("Hello, ", name or "world")
+`
+    })
   </script>
 </body>
+ 
+
 </html>
