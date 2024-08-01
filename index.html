@@ -3,66 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegram Bot User D11111ata</title>
+    <title>Responsive iFrame Example</title>
     <style>
+        /* Step 2: Add CSS for the iframe */
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevent scrollbars on the body */
         }
-        #userData {
-            border: 1px solid #ccc;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        iframe {
+            width: 100%; /* Full width */
+            height: 100vh; /* Full height of the viewport */
+            border: none; /* Remove border */
         }
     </style>
 </head>
 <body>
 
-<div id="userData">
-    <h2>User Information</h2>
-    <p><strong>ID:</strong> <span id="userId">Loading...</span></p>
-</div>
-
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-<div id="output"></div>
-<script>
-    // Ensure the Telegram WebApp SDK is loaded
-    window.Telegram.WebApp.ready();
-
-    const params = new URLSearchParams(Telegram.WebApp.initData);
-
-    const userData = Object.fromEntries(params);
-    console.log('User Data:', userData); 
-    //console.log('User Data:', Telegram.WebApp.initData); 
-    document.getElementById('userId').textContent = userData;//Telegram.WebApp.initData;
-
-    function displayObjectValues(obj, level = 0) {
-        for (const key in obj) {
-            if (obj.hasOwnProperty(key)) {
-                const value = obj[key];
-                if (typeof value === 'object' && value !== null) {
-                    displayObjectValues(value, level + 1);
-                } else {
-                    const outputElement = document.getElementById('output');
-                    outputElement.innerHTML += `${' '.repeat(level)}${key}: ${value}<br>`;
-                }
-            }
-        }
-    }
-
-       
-    displayObjectValues(userData);
-
-    // Log the user data to the console (optional)
-    
-</script>
+    <!-- Step 3: Embed the iframe -->
+    <iframe src="https://kingnish-instant-video.hf.space/" class="w-full min-h-[1800px] sm:min-h-[1200px]">
+        
+    </iframe>
 
 </body>
 </html>
