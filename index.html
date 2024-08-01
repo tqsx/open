@@ -4,12 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive iFrame Example</title>
+    <style>
+        /* Step 2: Add CSS for the iframe */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevent scrollbars on the body */
+        }
+
+        iframe {
+            width: 100%; /* Full width */
+            height: 100vh; /* Full height of the viewport */
+            border: none; /* Remove border */
+        }
+    </style>
 </head>
 <body>
 
+    <iframe src="https://sahaniji-instant-video.hf.space/" class="w-full min-h-[1800px] sm:min-h-[1200px]"></iframe>
     <!-- Step 3: Embed the iframe -->
-    <iframe src="https://nymbo-instant-video.hf.space/">
-    </iframe>
-    
+
 </body>
 </html>
